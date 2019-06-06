@@ -30,15 +30,15 @@ class Route {
   ];
 
   blocksTravelled() {
-    if (beginningLocation.horizontal === endingLocation.horizontal) {
-      return Math.abs(beginningLocation.vertical - endingLocation.vertical);
+    if (this.beginningLocation.horizontal === this.endingLocation.horizontal) {
+      return Math.abs(this.beginningLocation.vertical - this.endingLocation.vertical);
     }
     else {
       for (let i = 0; i < eastWest.size; i++) {
-        if (beginningLocation.horizontal === eastWest[i]) {
+        if (this.beginningLocation.horizontal === eastWest[i]) {
           const temp = i;
         }
-        if (endingLocation.horizontal === eastWest[i]) {
+        if (this.endingLocation.horizontal === eastWest[i]) {
           const temp2 = i;
         }
       }
@@ -46,7 +46,12 @@ class Route {
     }
   }
 
-  estimatedTime() {
-    blocksTravelled()
+  estimatedTime(boolean) {
+    if (boolean === true) {
+      return Math.round(blocksTravelled() / 2);
+    }
+    else {
+      return Math.round(blocksTravelled() / 3);
+    }
   }
 }
